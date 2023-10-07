@@ -339,7 +339,73 @@ public abstract class BaseIotData implements Serializable
 	 * {@see #timeStamp} to represent a new Date based on {@see #timeStampMillis}
 	 * in ISO 8601 format using {@see DateTimeFormatter.ISO_INSTANT}, as follows:
 	 * <p>
-	 * e.g. 2020-12-27T10:13:30Z
+	 * e.g. 2020-12-27T10:13:30Zclass DataUtil():
+	def __init__(self, encodeToUtf8 = False):
+		self.encodeToUtf8 = encodeToUtf8
+		
+		logging.info("Created DataUtil instance.")
+	
+	def actuatorDataToJson(self, data: ActuatorData = None, useDecForFloat: bool = False):
+		if not data:
+			logging.debug("ActuatorData is null. Returning empty string.")
+			return ""
+		
+		jsonData = self._generateJsonData(obj = data, useDecForFloat = False)
+		return jsonData
+	
+	def jsonToActuatorData(self, jsonData: str = None, useDecForFloat: bool = False):
+		if not jsonData:
+			logging.warning("JSON data is empty or null. Returning null.")
+			return None
+		
+		jsonStruct = self._formatDataAndLoadDictionary(jsonData, useDecForFloat = useDecForFloat)
+		ad = ActuatorData()
+		self._updateIotData(jsonStruct, ad)
+		return ad
+	
+	def _formatDataAndLoadDictionary(self, jsonData: str, useDecForFloat: bool = False) -> dict:
+		jsonData = jsonData.replace("\'", "\"").replace('False', 'false').replace('True', 'true')
+		
+		jsonStruct = None
+		
+		if useDecForFloat:
+			jsonStruct = json.loads(jsonData, parse_float = Decimal)
+		else:
+			jsonStruct = json.loads(jsonData)
+		
+		return jsonStruct
+		
+	def _generateJsonData(self, obj, useDecForFloat: bool = False) -> str:
+		jsonData = None
+		
+		if self.encodeToUtf8:
+			jsonData = json.dumps(obj, cls = JsonDataEncoder).encode('utf8')
+		else:
+			jsonData = json.dumps(obj, cls = JsonDataEncoder, indent = 4)
+		
+		if jsonData:
+			jsonData = jsonData.replace("\'", "\"").replace('False', 'false').replace('True', 'true')
+		
+		return jsonData
+	
+	def _updateIotData(self, jsonStruct, obj):
+		varStruct = vars(obj)
+		
+		for key in jsonStruct:
+			if key in varStruct:
+				setattr(obj, key, jsonStruct[key])
+			else:
+				logging.warn("JSON data contains key not mappable to object: %s", key)
+		
+class JsonDataEncoder(JSONEncoder):
+	"""
+	Convenience class to facilitate JSON encoding of an object that
+	can be converted to a dict.
+	
+	"""
+	def default(self, o):
+		return o.__dict__
+	
 	 * 
 	 */
 	protected final void updateTimeStamp()
