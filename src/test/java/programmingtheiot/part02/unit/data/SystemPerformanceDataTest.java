@@ -35,9 +35,9 @@ public class SystemPerformanceDataTest
 		Logger.getLogger(SystemPerformanceDataTest.class.getName());
 	
 	public static final String DEFAULT_NAME = "SystemPerformanceDataFooBar";
-	public static final float DEFAULT_CPU_UTIL_DATA = 10.0f;
-	public static final float DEFAULT_DISK_UTIL_DATA = 10.0f;
-	public static final float DEFAULT_MEM_UTIL_DATA = 10.0f;
+	public static final float DEFAULT_CPU_UTIL_DATA = 0.0f;
+	public static final float DEFAULT_DISK_UTIL_DATA = 0.0f;
+	public static final float DEFAULT_MEM_UTIL_DATA = 0.0f;
 	
 	
 	// member var's
