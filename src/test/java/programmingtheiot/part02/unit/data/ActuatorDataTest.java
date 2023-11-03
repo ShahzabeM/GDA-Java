@@ -35,8 +35,8 @@ public class ActuatorDataTest
 		Logger.getLogger(ActuatorDataTest.class.getName());
 	
 	public static final String DEFAULT_NAME = "ActuatorDataFooBar";
-	public static final int DEFAULT_CMD = 1;
-	public static final float DEFAULT_VAL = 10.0f;
+	public static final int DEFAULT_CMD = 0;
+	public static final float DEFAULT_VAL = 0.0f;
 	
 	
 	// member var's
