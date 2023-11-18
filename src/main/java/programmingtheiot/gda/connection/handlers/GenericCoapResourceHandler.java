@@ -26,38 +26,23 @@ import programmingtheiot.common.ResourceNameEnum;
  */
 public class GenericCoapResourceHandler extends CoapResource
 {
-	// static
 	
 	private static final Logger _Logger =
 		Logger.getLogger(GenericCoapResourceHandler.class.getName());
 	
-	// params
 	
-	
-	// constructors
-	
-	/**
-	 * Constructor.
-	 * 
-	 * @param resource Basically, the path (or topic)
-	 */
 	public GenericCoapResourceHandler(ResourceNameEnum resource)
 	{
 		this(resource.getResourceName());
 	}
 	
-	/**
-	 * Constructor.
-	 * 
-	 * @param resourceName The name of the resource.
-	 */
+	
 	public GenericCoapResourceHandler(String resourceName)
 	{
 		super(resourceName);
 	}
 	
 	
-	// public methods
 	
 	@Override
 	public void handleDELETE(CoapExchange context)
