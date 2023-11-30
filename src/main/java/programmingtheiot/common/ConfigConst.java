@@ -22,14 +22,14 @@ public class ConfigConst
 	
 	public static final String NOT_SET = "Not Set";
 	
-	public static final String DEFAULT_HOST             = "localhost";
+	public static final String DEFAULT_HOST             = "127.0.0.1";
 	public static final String DEFAULT_COAP_PROTOCOL    = "coap";
 	public static final String DEFAULT_COAP_SECURE_PROTOCOL = "coaps";
 	public static final int    DEFAULT_COAP_PORT        = 5683;
 	public static final int    DEFAULT_COAP_SECURE_PORT = 5684;
 	public static final String DEFAULT_MQTT_PROTOCOL    = "tcp";
 	public static final String DEFAULT_MQTT_SECURE_PROTOCOL = "ssl";
-	public static final int    DEFAULT_MQTT_PORT        = 1883;
+	public static final int    DEFAULT_MQTT_PORT        = 8883;
 	public static final int    DEFAULT_MQTT_SECURE_PORT = 8883;
 	public static final int    DEFAULT_KEEP_ALIVE       = 60;
 	public static final int    DEFAULT_POLL_CYCLES      = 60;
@@ -171,11 +171,11 @@ public class ConfigConst
 	 * Configuration Sections, Keys and Defaults
 	 */
 	
-	public static final String DEFAULT_CONFIG_FILE_NAME      = "./config/PiotConfig.props";
+	public static final String DEFAULT_CONFIG_FILE_NAME      = "/home/bans/programmingtheiot/java-components/config/PiotConfig.props";
 	public static final String DEFAULT_CRED_FILE_NAME        = "./cred/PiotCred.props";
 	public static final String DEFAULT_KEY_STORE_FILE_NAME   = "./cred/KeyStore.jks";
 	public static final String DEFAULT_TRUST_STORE_FILE_NAME = "./cred/TrustStore.jks";
-	public static final String DEFAULT_CERT_FILE_NAME        = "./cert/PiotCert.pem";
+	public static final String DEFAULT_CERT_FILE_NAME        = "home/bans/Desktop/Keys/server.crt";
 	
 	public static final int DEFAULT_QOS = 0;
 	

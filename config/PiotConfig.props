@@ -12,7 +12,7 @@
 #
 [Cloud.GatewayService]
 credFile       = ./cred/PiotCloudCred.props
-certFile       = ./cert/PiotCloudCert.pem
+certFile       = /home/zabe/programmingtheiot/java-components/certs/server.crt
 host           = localhost
 port           = 1883
 securePort     = 8883
